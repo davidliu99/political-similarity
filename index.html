@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />    
+    <link href="./style.css" rel="stylesheet" />
+</meta>
+</head>
+
+<body>
+    <div id="container">
+        <!-- Header -->
+        <div id="header">
+            <div style="font-size:1.8rem; text-align: center; font-weight: 400;">
+                Political Alignments of American States
+            </div>
+        </div>
+
+        <hr>
+
+        <div id="infobox" style="width: 100%; height: 80px; margin: auto; text-align: center;"></div>
+        <div id="map" style="width: 80vw; max-width: 800px; height: 54vw; max-height: 540px; margin: auto;"></div>    
+
+        <div id="settings-container" style="max-width: 600px; margin: auto; font-size: 16px; padding-bottom: 10px;">
+            <div onclick="toggleSettings()" style="display:inline-block; cursor:pointer; padding-bottom: 7px;">
+                <span style="vertical-align:1px; width:10px; display:inline-block;" id="settings-arrow">▸</span> <b>Settings</b>
+            </div>
+            <div id="settings" style="display: none; margin-left: 14px; font-size: 14px;">
+                <div style="padding-bottom: 6px;">
+                    <div style="display: inline;">Outcome of interest:</div>
+                    <div class="select-dropdown">
+                        <select id="outcome" onchange="updateOutcomeOfInterest()">
+                        <option value="winner">Winner</option>
+                        <option value="margin">Margin</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="padding-bottom: 6px;">
+                    <div style="display: inline;">Start year:</div>
+                    <div class="select-dropdown">
+                        <select id="startYear" onchange="updateRange()">
+                            <option value="1916" selected="selected">1916</option>
+                            <option value="1920">1920</option>
+                            <option value="1924">1924</option>
+                            <option value="1928">1928</option>
+                            <option value="1932">1932</option>
+                            <option value="1936">1936</option>
+                            <option value="1940">1940</option>
+                            <option value="1944">1944</option>
+                            <option value="1948">1948</option>
+                            <option value="1952">1952</option>
+                            <option value="1956">1956</option>
+                            <option value="1960">1960</option>
+                            <option value="1964">1964</option>
+                            <option value="1968">1968</option>
+                            <option value="1972">1972</option>
+                            <option value="1976">1976</option>
+                            <option value="1980">1980</option>
+                            <option value="1984">1984</option>
+                            <option value="1988">1988</option>
+                            <option value="1992">1992</option>
+                            <option value="1996">1996</option>
+                            <option value="2000">2000</option>
+                            <option value="2004">2004</option>
+                            <option value="2008">2008</option>
+                            <option value="2012">2012</option>
+                            <option value="2016">2016</option>
+                            <option value="2020">2020</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="padding-bottom: 6px;">
+                    <div style="display: inline;">End year:</div>
+                    <div class="select-dropdown">
+                        <select id="endYear" onchange="updateRange()">
+                            <option value="1916">1916</option>
+                            <option value="1920">1920</option>
+                            <option value="1924">1924</option>
+                            <option value="1928">1928</option>
+                            <option value="1932">1932</option>
+                            <option value="1936">1936</option>
+                            <option value="1940">1940</option>
+                            <option value="1944">1944</option>
+                            <option value="1948">1948</option>
+                            <option value="1952">1952</option>
+                            <option value="1956">1956</option>
+                            <option value="1960">1960</option>
+                            <option value="1964">1964</option>
+                            <option value="1968">1968</option>
+                            <option value="1972">1972</option>
+                            <option value="1976">1976</option>
+                            <option value="1980">1980</option>
+                            <option value="1984">1984</option>
+                            <option value="1988">1988</option>
+                            <option value="1992">1992</option>
+                            <option value="1996">1996</option>
+                            <option value="2000">2000</option>
+                            <option value="2004">2004</option>
+                            <option value="2008">2008</option>
+                            <option value="2012">2012</option>
+                            <option value="2016">2016</option>
+                            <option value="2020" selected="selected">2020</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="invalidRangeWarning" style="display:none;">
+                    <p style="width:100%; color:crimson; text-align: center; margin: 0;">Please input a valid range.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="help-container" style="width: 600px; margin: auto; font-size: 16px;">
+            <div onclick="toggleHelp()" style="display:none; cursor:pointer; padding-bottom: 5px;">
+                <span style="vertical-align:1px; width:10px; display:inline-block;" id="help-arrow">▸</span> <b>Help</b>
+            </div>
+            <div id="help" style="margin-left: 14px; display: none; font-size: 14px;">
+            </div>
+        </div>
+    </div>
+    <script src="./data.js"></script>
+    <script src="./script.js"></script>
+</body>

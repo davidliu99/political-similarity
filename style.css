@@ -1,0 +1,51 @@
+#container {
+    font-family: 'Helvetica Neue', 'Clear Sans', sans-serif;
+    max-width: 1000px;
+    width: 80vw;
+    min-width: 300px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+.mapboxgl-popup-content {
+    padding: 10px;
+}
+
+.select-dropdown {
+    position: relative;
+    background-color: transparent;
+    width: 100px;
+    float: right;
+    max-width: 100%;
+    border-radius: 2px;
+}
+
+.select-dropdown:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    margin-top: -2px;
+    right: 8px;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #aaa;
+}
+
+.select-dropdown select {
+    font-family: "helvetica neue", helvetica;
+    font-size: 100%;
+    width: 100%;
+    padding: 0px 8px 0px 8px;
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+.select-dropdown select:active, select:focus {
+    outline: none;
+    box-shadow: none;
+}
